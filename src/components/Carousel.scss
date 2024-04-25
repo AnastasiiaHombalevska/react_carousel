@@ -1,1 +1,21 @@
-// style go here
+.Carousel {
+  &__conteiner {
+    // width: 1300px;
+    width: 290px;
+    overflow: hidden;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    // justify-content: space-between;
+  }
+
+  // &__list__image {
+  //   width: 130px;
+  // }
+
+  // &__btn--next {
+  //   transform: translateX(0);
+  // }
+}

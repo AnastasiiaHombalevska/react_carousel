@@ -1,25 +1,62 @@
 import React from 'react';
 import './Carousel.scss';
+// import { transform } from 'cypress/types/lodash';
 
-const Carousel: React.FC = () => (
+type CarouselProp = {
+  images: string[];
+  itemWidth: number;
+  frameSize: number;
+};
+
+const Carousel: React.FC<CarouselProp> = ({ images, itemWidth, frameSize }) => (
   <div className="Carousel">
-    <ul className="Carousel__list">
-      <li>
-        <img src="./img/1.png" alt="1" />
-      </li>
-      <li>
-        <img src="./img/1.png" alt="2" />
-      </li>
-      <li>
-        <img src="./img/1.png" alt="3" />
-      </li>
-      <li>
-        <img src="./img/1.png" alt="4" />
-      </li>
+    <div className='Carousel__conteiner' style={{ width: frameSize * itemWidth }}>
+      <ul className="Carousel__list">
+      {images.map((image, index) => (
+        <li className="Carousel__list__item" key={image}>
+          <img
+            src={image}
+            alt={`image ${index + 1}`}
+            style={{ width: itemWidth }}
+            className="Carousel__list__image"
+          />
+        </li>
+      ))}
     </ul>
+    </div>
 
-    <button type="button">Prev</button>
-    <button type="button">Next</button>
+    <div className="Carousel__btn__conteiner">
+      <button
+        type="button"
+        className="Carousel__btn Carousel__btn--prev"
+        onClick={() => {
+          const carouselPrev = document.querySelector('.Carousel__list',) as HTMLElement;
+
+          if (carouselPrev) {
+            carouselPrev.style.transform = 'translateX(260px)';
+          }
+        }}
+      >
+        Prev
+      </button>
+
+      <button
+        type="button"
+        className="Carousel__btn Carousel__btn--next"
+        data-cy="next"
+        onClick={() => {
+          const carouselNext = document.querySelector(
+            '.Carousel__list',
+          ) as HTMLElement;
+
+          if (carouselNext) {
+            carouselNext.style.transform = 'translateX(-260px)';
+          }
+        }}
+      >
+        Next
+      </button>
+    </div>
   </div>
 );
 

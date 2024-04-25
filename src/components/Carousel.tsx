@@ -1,14 +1,14 @@
 import React from 'react';
 import './Carousel.scss';
-// import { transform } from 'cypress/types/lodash';
 
 type CarouselProp = {
   images: string[];
   itemWidth: number;
   frameSize: number;
+  step: number
 };
 
-const Carousel: React.FC<CarouselProp> = ({ images, itemWidth, frameSize }) => (
+const Carousel: React.FC<CarouselProp> = ({ images, itemWidth, frameSize, step }) => (
   <div className="Carousel">
     <div
       className="Carousel__conteiner"
@@ -33,12 +33,10 @@ const Carousel: React.FC<CarouselProp> = ({ images, itemWidth, frameSize }) => (
         type="button"
         className="Carousel__btn Carousel__btn--prev"
         onClick={() => {
-          const carouselPrev = document.querySelector(
-            '.Carousel__list',
-          ) as HTMLElement;
+          const carouselPrev = document.querySelector('.Carousel__list') as HTMLElement;
 
           if (carouselPrev) {
-            carouselPrev.style.transform = 'translateX(260px)';
+            carouselPrev.style.transform = `translateX(-${(itemWidth * frameSize) * step}px)`;
           }
         }}
       >

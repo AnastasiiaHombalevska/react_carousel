@@ -21,7 +21,7 @@ const App: React.FC<State> = () => {
     './img/10.png',
   ]);
   const [itemWidth, setiItemWidth] = useState(130);
-  // const [step, setStep] = useState(3);
+  const [step, setStep] = useState(3);
   const [frameSize, setFrameSize] = useState(3);
   // const [animationDuration, setAnimationDuration] = useState(1000);
   // const [infinite] = useState(false);
@@ -53,7 +53,14 @@ const App: React.FC<State> = () => {
         />
 
         <label htmlFor="step">Enter number for step:</label>
-        <input type="number" id="step" />
+        <input
+          type="number"
+          id="step"
+          maxLength={10}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setStep(parseInt(e.target.value))
+          }
+        />
 
         <label htmlFor="animationDuration">
           Enter animation duration in ms:
@@ -61,7 +68,7 @@ const App: React.FC<State> = () => {
         <input type="number" id="animationDuration" />
       </form>
 
-      <Carousel images={images} itemWidth={itemWidth} frameSize={frameSize} />
+      <Carousel images={images} itemWidth={itemWidth} frameSize={frameSize} step={step} />
     </div>
   );
 };

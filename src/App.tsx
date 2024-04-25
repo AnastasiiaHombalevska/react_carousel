@@ -61,11 +61,7 @@ const App: React.FC<State> = () => {
         <input type="number" id="animationDuration" />
       </form>
 
-      <Carousel
-        images={images}
-        itemWidth={itemWidth}
-        frameSize={frameSize}
-      />
+      <Carousel images={images} itemWidth={itemWidth} frameSize={frameSize} />
     </div>
   );
 };

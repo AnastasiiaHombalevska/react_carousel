@@ -10,19 +10,22 @@ type CarouselProp = {
 
 const Carousel: React.FC<CarouselProp> = ({ images, itemWidth, frameSize }) => (
   <div className="Carousel">
-    <div className='Carousel__conteiner' style={{ width: frameSize * itemWidth }}>
+    <div
+      className="Carousel__conteiner"
+      style={{ width: frameSize * itemWidth }}
+    >
       <ul className="Carousel__list">
-      {images.map((image, index) => (
-        <li className="Carousel__list__item" key={image}>
-          <img
-            src={image}
-            alt={`image ${index + 1}`}
-            style={{ width: itemWidth }}
-            className="Carousel__list__image"
-          />
-        </li>
-      ))}
-    </ul>
+        {images.map((image, index) => (
+          <li className="Carousel__list__item" key={image}>
+            <img
+              src={image}
+              alt={`image ${index + 1}`}
+              style={{ width: itemWidth }}
+              className="Carousel__list__image"
+            />
+          </li>
+        ))}
+      </ul>
     </div>
 
     <div className="Carousel__btn__conteiner">
@@ -30,7 +33,9 @@ const Carousel: React.FC<CarouselProp> = ({ images, itemWidth, frameSize }) => (
         type="button"
         className="Carousel__btn Carousel__btn--prev"
         onClick={() => {
-          const carouselPrev = document.querySelector('.Carousel__list',) as HTMLElement;
+          const carouselPrev = document.querySelector(
+            '.Carousel__list',
+          ) as HTMLElement;
 
           if (carouselPrev) {
             carouselPrev.style.transform = 'translateX(260px)';
